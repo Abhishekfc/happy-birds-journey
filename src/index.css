@@ -40,6 +40,10 @@
     @apply border-border;
   }
 
+  html, body, #root {
+    @apply h-full w-full overflow-hidden;
+  }
+
   body {
     @apply bg-background text-foreground font-sans antialiased;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
@@ -59,20 +63,23 @@
     @apply bg-muted rounded-full hover:bg-muted/80 transition-colors;
   }
 
-  .mobile-frame {
-    max-width: 380px;
-    height: 780px;
-    overflow: hidden;
-    position: relative;
-    @apply bg-background rounded-[40px] border-8 border-gray-800 shadow-2xl;
-  }
-
+  /* App container styles for mobile and web */
   .app-container {
     height: 100%;
     overflow-y: auto;
     overflow-x: hidden;
     position: relative;
     @apply flex flex-col;
+  }
+
+  /* Native app styling - ensures content fits the screen properly */
+  @media (display-mode: standalone), (display-mode: fullscreen) {
+    .app-container {
+      height: 100%;
+      max-height: 100svh;
+      padding-bottom: env(safe-area-inset-bottom, 16px);
+      padding-top: env(safe-area-inset-top, 0);
+    }
   }
 
   /* Glass Card Effect */
