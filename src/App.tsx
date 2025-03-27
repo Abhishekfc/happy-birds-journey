@@ -17,11 +17,11 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <AuthProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
+    <BrowserRouter>
+      <AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
           <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-br from-gray-950 to-gray-900 p-4 sm:p-8">
             <MobileFrame>
               <Routes>
@@ -34,9 +34,9 @@ const App = () => (
               </Routes>
             </MobileFrame>
           </div>
-        </BrowserRouter>
-      </TooltipProvider>
-    </AuthProvider>
+        </TooltipProvider>
+      </AuthProvider>
+    </BrowserRouter>
   </QueryClientProvider>
 );
 
